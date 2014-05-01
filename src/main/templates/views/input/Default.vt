@@ -1,0 +1,114 @@
+
+
+<script type="text/javascript">
+	dojo.require("dijit.dijit");
+	dojo.require("dijit.dijit-all");
+</script>
+
+<h1>Parametry algorytmu</h1>
+
+#set($inputFormGroup = $intake.InputForm.Default)
+<form  dojoType="dijit.form.Form" method="post" action="$link.view('output.Default')">
+	<div class="seq">
+		<table  class="border">
+			#tr_edit_textline($inputFormGroup.SequenceA)
+			#tr_edit_textline($inputFormGroup.SequenceB)
+		</table>
+	</div>
+	<div class="break">
+		<table  class="border">
+			#tr_edit_textline($inputFormGroup.BreakBegin)
+			#tr_edit_textline($inputFormGroup.BreakContinue)
+		</table>
+	</div>
+	<div class="matrix">
+		<h3>Macierz podobieństwa</h3>
+		<br>
+		<button dojoType="dijit.form.Button">Domyślna</button>
+		<button dojoType="dijit.form.Button">Rzeczywista</button>
+		<table>
+			<tr>
+				<td></td>
+                <td>A</td>
+				<td>G</td>
+				<td>C</td>
+				<td>T/U</td>
+            </tr>
+			<tr>
+				<td>A</td>
+                <td>#edit($inputFormGroup.AA)</td>
+				<td>#edit($inputFormGroup.AG)</td>
+				<td>#edit($inputFormGroup.AC)</td>
+				<td>#edit($inputFormGroup.AT)</td>
+            </tr>
+			<tr>
+				<td>G</td>
+				<td>#edit($inputFormGroup.AG)</td>
+				<td>#edit($inputFormGroup.GG)</td>
+				<td>#edit($inputFormGroup.GC)</td>
+				<td></td>
+            </tr>
+			<tr>
+				<td>C</td>
+				<td>#edit($inputFormGroup.AC)</td>
+				<td>#edit($inputFormGroup.GC)</td>
+				<td></td>
+				<td></td>
+            </tr>
+			<tr>
+				<td>T/U</td>
+				<td>#edit($inputFormGroup.AT)</td>
+				<td></td>
+				<td></td>
+				<td></td>
+            </tr>
+		</table>
+	</div>
+	$intake.declareGroups()	
+	<button dojoType="dijit.form.Button" type="submit" name="submitButton" value="Submit">Uruchom algorytm</button>
+</form>
+
+#macro (edit $_field)
+<input name="$_field.Key" value="$!_field" type="text" trim  style="width:3em" dojoType="dijit.form.TextBox"/>
+#end
+#* 
+<table>
+			<tr>
+				<td></td>
+                <td>A</td>
+				<td>G</td>
+				<td>C</td>
+				<td>T/U</td>
+            </tr>
+			<tr>
+				<td>A</td>
+                <td>#edit($inputFormGroup.AA)</td>
+				<td>#edit($inputFormGroup.AG)</td>
+				<td>#edit($inputFormGroup.AC)</td>
+				<td>#edit($inputFormGroup.AT)</td>
+            </tr>
+			<tr>
+				<td>G</td>
+				<td>#edit($inputFormGroup.AG)</td>
+				<td>#edit($inputFormGroup.GG)</td>
+				<td>#edit($inputFormGroup.GC)</td>
+				<td>#edit($inputFormGroup.GT)</td>
+            </tr>
+			<tr>
+				<td>C</td>
+				<td>#edit($inputFormGroup.AC)</td>
+				<td>#edit($inputFormGroup.GC)</td>
+				<td>#edit($inputFormGroup.CC)</td>
+				<td>#edit($inputFormGroup.CT)</td>
+            </tr>
+			<tr>
+				<td>T/U</td>
+				<td>#edit($inputFormGroup.AT)</td>
+				<td>#edit($inputFormGroup.GT)</td>
+				<td>#edit($inputFormGroup.CT)</td>
+				<td>#edit($inputFormGroup.TT)</td>
+            </tr>
+		</table>
+*#
+
+##edit_textline

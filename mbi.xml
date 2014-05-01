@@ -1,0 +1,6 @@
+<Context
+  docBase="/home/mizin/ledge/workspace/mbi/target/mbi.war"
+  path="/mbi" 
+  reloadable="true" >
+  <Parameter name="ledge.root" value="/home/mizin/ledge/workspace/mbi/target/war/work"/>
+</Context>

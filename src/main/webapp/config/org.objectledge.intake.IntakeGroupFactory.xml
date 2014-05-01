@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<input-data basePackage="pl.waw.mizinski.mbi.">
+
+	<!-- Known types: BigDecimal,ComboKey,DateString,TimestampString,FileItem,NumberKey,String,StringKey,boolean,char,double,float,int,long,short,byte,Enum -->
+
+	<group name="InputForm" key="inputForm" mapToObject="InputForm">
+		<field name="SequenceA" key="sequenceA" type="String"
+			displayName="Sekwencja A">
+			<rule name="required" value="true">To pole jest Wymagane</rule>
+			<rule name="mask" value="([AGCT]+)|([AGCU]+)">To nie jest poprawna sekwencja DNA/RNA
+			</rule>
+		</field>
+		<field name="SequenceB" key="sequenceB" type="String"
+			displayName="Sekwencja B">
+			<rule name="required" value="true">To pole jest Wymagane</rule>
+			<rule name="mask" value="([AGCT]+)|([AGCU]+)">To nie jest poprawna sekwencja DNA/RNA
+			</rule>
+		</field>
+
+		<field name="BreakBegin" key="breakBegin" type="int"
+			displayName="Kara za rozpoczęcie przerwy">
+			<rule name="required" value="true">To pole jest Wymagane</rule>
+		</field>
+		<field name="BreakContinue" key="breakContinue" type="int"
+			displayName="Kara za kotynuowanie przerwy">
+			<rule name="required" value="true">To pole jest Wymagane</rule>
+		</field>
+
+		<field name="AA" key="AA" type="int">
+			<rule name="required" value="true" />
+		</field>
+		<field name="AG" key="AG" type="int">
+			<rule name="required" value="true" />
+		</field>
+		<field name="AC" key="AC" type="int">
+			<rule name="required" value="true" />
+		</field>
+		<field name="AT" key="AT" type="int">
+			<rule name="required" value="true" />
+		</field>
+		<field name="GG" key="GG" type="int">
+			<rule name="required" value="true" />
+		</field>
+		<field name="GC" key="GC" type="int">
+			<rule name="required" value="true" />
+		</field>
+		<field name="GT" key="GT" type="int">
+			<rule name="required" value="true" />
+		</field>
+		<field name="CC" key="CC" type="int">
+			<rule name="required" value="true" />
+		</field>
+		<field name="CT" key="CT" type="int">
+			<rule name="required" value="true" />
+		</field>
+		<field name="TT" key="TT" type="int">
+			<rule name="required" value="true" />
+		</field>
+
+	</group>
+
+</input-data>
