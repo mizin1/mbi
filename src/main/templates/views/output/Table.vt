@@ -1,0 +1,94 @@
+#set ($sequenceA = $result.getSequenceA())
+#set ($sequenceB = $result.getSequenceB())
+
+<script type="text/javascript">
+	dojo.require("dijit.dijit");
+	dojo.require("dijit.dijit-all");
+	
+	var step = -1;
+	var maxStep = $sequenceA.length() * $sequenceB.length();
+	
+	function nextStep() {
+		if (step < maxStep) {
+    		if (step == -1){
+    		
+    		} else {
+    			var j = Math.floor(step/$sequenceA.length());
+    			var i = step % $sequenceA.length();
+    			show(i,j);
+    		}
+    		step = step + 1;
+		}
+	}
+	
+	function show(i,j) {
+		var spanId = 'span-' + i + '-' + j;
+		var tdId = 'td-' + i + '-' + j;
+		var toooltipId = 'tooltip-' + i + '-' + j;
+		document.getElementById(spanId).style.display = 'inline';
+		document.getElementById(tdId).style = "";
+		var tooltip = dijit.byId(toooltipId);
+		tooltip.connectId = tdId;
+		tooltip.startup();
+	}
+	
+</script>
+
+<table class="result">
+	<tr>
+	<td></td>
+	<td></td>
+	#foreach($a in $sequenceA.toCharArray())
+		<td class="legend">
+            <span class="legend">$a</span>
+		</td>
+	#end
+	</tr>
+	<tr>
+	<td></td>
+	
+	#foreach($a in [0 .. $sequenceA.length()])
+		<td class="alig0">
+            <span class="align0">0</span>
+		</td>
+	#end
+	</tr>
+	
+	#set ($j = 0)
+	#foreach($b in $sequenceB.toCharArray())
+		<tr>
+    		<td class="legend">
+                <span class="legend">$b</span>
+    		</td>
+			<td class="align0">
+                <span class="alig0">0</span>
+    		</td>
+    		#set ($i = 0)
+        	#foreach($a in $sequenceA.toCharArray())
+        		<td id="td-${i}-$j" class="$result.getAlignmentClass($i, $j)" style="background:#FFFFFF;">
+                    <span id="span-${i}-$j" style="display:none">$result.getAlignment($i, $j)</span>
+        		</td>
+				#set ($i = $i + 1)
+			#end
+		</tr>
+		#set ($j = $j + 1)
+	#end
+</table>
+
+
+<button dojoType="dijit.form.Button" onClick="nextStep();">
+	Następny krok
+</button>
+
+#set ($j = 0)
+#foreach($b in $sequenceB.toCharArray())
+	#set ($i = 0)
+    	#foreach($a in $sequenceA.toCharArray())
+    		<div id="tooltip-${i}-$j" dojoType="dijit.Tooltip" position="below" >
+				To sie jeszcze uzupełni
+            </div>
+			#set ($i = $i + 1)
+		#end
+	#set ($j = $j + 1)
+#end
+ 

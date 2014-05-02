@@ -1,4 +1,4 @@
-package pl.waw.mizinski.mbi;
+package pl.waw.mizinski.mbi.commons;
 
 public class InputForm {
 	

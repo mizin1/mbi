@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<input-data basePackage="pl.waw.mizinski.mbi.">
+<input-data basePackage="pl.waw.mizinski.mbi.commons.">
 
 	<!-- Known types: BigDecimal,ComboKey,DateString,TimestampString,FileItem,NumberKey,String,StringKey,boolean,char,double,float,int,long,short,byte,Enum -->
 
