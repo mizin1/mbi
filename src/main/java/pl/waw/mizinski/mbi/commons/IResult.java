@@ -9,4 +9,10 @@ public interface IResult {
 	int getAlignment(int i, int j);
 	
 	AlignmentClass getAlignmentClass(int i, int j);
+	
+	String getMessage();
+	
+	String[][] getNBestResults(int n);
+	
+	String[][] getResultsBetterThan(int alignment);
 }

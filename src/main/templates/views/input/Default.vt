@@ -1,14 +1,40 @@
-
+#set($inputFormGroup = $intake.InputForm.Default)
 
 <script type="text/javascript">
 	dojo.require("dijit.dijit");
 	dojo.require("dijit.dijit-all");
+	
+	function defultMatrix() {
+		document.getElementById('$inputFormGroup.AA.Key').value = '1'
+		document.getElementById('$inputFormGroup.AG.Key').value = '-1'
+		document.getElementById('$inputFormGroup.AC.Key').value = '-1'
+		document.getElementById('$inputFormGroup.AT.Key').value = '-1'
+		document.getElementById('$inputFormGroup.GG.Key').value = '1'
+		document.getElementById('$inputFormGroup.GC.Key').value = '-1'
+		document.getElementById('$inputFormGroup.GT.Key').value = '-1'
+		document.getElementById('$inputFormGroup.CC.Key').value = '1'
+		document.getElementById('$inputFormGroup.CT.Key').value = '-1'
+		document.getElementById('$inputFormGroup.TT.Key').value = '1'
+	}
+	
+	function realMatrix() {
+		document.getElementById('$inputFormGroup.AA.Key').value = '10'
+		document.getElementById('$inputFormGroup.AG.Key').value = '-1'
+		document.getElementById('$inputFormGroup.AC.Key').value = '-3'
+		document.getElementById('$inputFormGroup.AT.Key').value = '-4'
+		document.getElementById('$inputFormGroup.GG.Key').value = '7'
+		document.getElementById('$inputFormGroup.GC.Key').value = '-5'
+		document.getElementById('$inputFormGroup.GT.Key').value = '-3'
+		document.getElementById('$inputFormGroup.CC.Key').value = '9'
+		document.getElementById('$inputFormGroup.CT.Key').value = '0'
+		document.getElementById('$inputFormGroup.TT.Key').value = '8'
+	}
 </script>
 
 <h1>Parametry algorytmu</h1>
 
-#set($inputFormGroup = $intake.InputForm.Default)
-<form  dojoType="dijit.form.Form" method="post" action="$link.view('output.Default')">
+
+<form  dojoType="dijit.form.Form" method="post" action="$link.view('output.Table').action('PerformAlgorithm')">
 	<div class="seq">
 		<table  class="border">
 			#tr_edit_textline($inputFormGroup.SequenceA)
@@ -24,8 +50,8 @@
 	<div class="matrix">
 		<h3>Macierz podobieństwa</h3>
 		<br>
-		<button dojoType="dijit.form.Button">Domyślna</button>
-		<button dojoType="dijit.form.Button">Rzeczywista</button>
+		<button dojoType="dijit.form.Button" onclick="defultMatrix();">Domyślna</button>
+		<button dojoType="dijit.form.Button" onclick="realMatrix();">Rzeczywista</button>
 		<table>
 			<tr>
 				<td></td>
@@ -37,30 +63,30 @@
 			<tr>
 				<td>A</td>
                 <td>#edit($inputFormGroup.AA)</td>
-				<td>#edit($inputFormGroup.AG)</td>
-				<td>#edit($inputFormGroup.AC)</td>
-				<td>#edit($inputFormGroup.AT)</td>
+                <td></td>
+				<td></td>
+				
             </tr>
 			<tr>
 				<td>G</td>
 				<td>#edit($inputFormGroup.AG)</td>
 				<td>#edit($inputFormGroup.GG)</td>
-				<td>#edit($inputFormGroup.GC)</td>
+				<td></td>
 				<td></td>
             </tr>
 			<tr>
 				<td>C</td>
 				<td>#edit($inputFormGroup.AC)</td>
 				<td>#edit($inputFormGroup.GC)</td>
-				<td></td>
+				<td>#edit($inputFormGroup.CC)</td>
 				<td></td>
             </tr>
 			<tr>
 				<td>T/U</td>
 				<td>#edit($inputFormGroup.AT)</td>
-				<td></td>
-				<td></td>
-				<td></td>
+				<td>#edit($inputFormGroup.GT)</td>
+				<td>#edit($inputFormGroup.CT)</td>
+				<td>#edit($inputFormGroup.TT)</td>
             </tr>
 		</table>
 	</div>
@@ -69,5 +95,5 @@
 </form>
 
 #macro (edit $_field)
-<input name="$_field.Key" value="$!_field" type="text" trim  style="width:3em" dojoType="dijit.form.TextBox"/>
+<input id="$_field.Key" name="$_field.Key" value="$!_field" type="text" trim  style="width:3em" dojoType="dijit.form.TextBox"/>
 #end

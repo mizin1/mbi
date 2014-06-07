@@ -12,7 +12,12 @@ table.result {
 table.result td {
 	border: 1px solid Black;
 	padding: 0.5em;
-	
+	width: 1.5em;
+	text-align: center;
+}
+
+td.legend {
+	background : #FFF url(images/table_bck.gif) repeat;
 }
 
 table.result td + td{
@@ -42,6 +47,25 @@ td.alig4 {
 
 td.alig5 {
 	background: #FF0000;
+}
+
+div.intake-message {
+	color: red;
+}
+
+div.summation {
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	width: 500px;
+	border: 1px solid Black;
+}
+
+div.search {
+	margin-left: auto;
+	margin-right: auto;
+	width: 300px;
+	text-align: left;
 }
 
 

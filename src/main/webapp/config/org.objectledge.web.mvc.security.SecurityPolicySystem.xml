@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+   -author: marcin gołębski
+   -author: jarosław dawidczyk
+   -created on: 26-09-2005
+   -version: $id: org.objectledge.web.mvc.security.securitypolicysystem.xml,v 1.16 2006/02/17 12:28:11 mgolebsk exp $
+ -->
+
+
+<config>
+  <globalLoginRequired>false</globalLoginRequired>
+  <globalSSL>false</globalSSL>
+  <globalAccess>true</globalAccess>
+</config>

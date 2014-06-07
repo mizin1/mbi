@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+   -author: Marcin Gołębski
+   -created on: 26-03-2009
+   -version: $Id: org.objectledge.security.menu.SecureMenuSystem.xml,v 1.13 2011-08-10 14:05:49 mgolebsk Exp $
+ -->
+
+<config>
+	<menuSet name="default">	
+		<menu label="Features">
+		  <menuItem label="Reload" view="demo.Reload"/>
+		</menu>
+	</menuSet> 
+	 
+
+</config>

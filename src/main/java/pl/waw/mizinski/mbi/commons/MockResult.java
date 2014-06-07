@@ -21,4 +21,16 @@ public class MockResult implements IResult {
 		int alig = (2*i + j)/6;
 		return alig > 5 ? AlignmentClass.alig5 : AlignmentClass.fromInt(alig);
 	}
+
+	public String getMessage() {
+		return "MOCK_MESSAGE";
+	}
+
+	public String[][] getNBestResults(int n) {
+		return new String[][] {{sequenceA, sequenceB}};
+	}
+
+	public String[][] getResultsBetterThan(int alignment) {
+		return new String[][] {{sequenceA, sequenceB}};
+	}
 }

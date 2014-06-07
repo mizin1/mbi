@@ -2,7 +2,6 @@ package pl.waw.mizinski.mbi.logic;
 
 import static pl.waw.mizinski.mbi.logic.Jump.*;
 import pl.waw.mizinski.mbi.commons.InputForm;
-import pl.waw.mizinski.mbi.commons.Result;
 
 public class SequenceAlignmentService {
 
@@ -18,8 +17,8 @@ public class SequenceAlignmentService {
 	private Jump[][] jumps;
 
 	public SequenceAlignmentService(InputForm inputForm) {
-		sequenceA = inputForm.getSequenceA();
-		sequenceB = inputForm.getSequenceB();
+		sequenceA = inputForm.getCorrectedSequenceA();
+		sequenceB = inputForm.getCorrectedSequenceB();
 		breakBegin = inputForm.getBreakBegin();
 		breakContinue = inputForm.getBreakContinue();
 		similarityMatrix = new SimilarityMatrix(inputForm);
@@ -30,22 +29,21 @@ public class SequenceAlignmentService {
 	public Result performAlgorithm() {
 		initJumpsArray();
 		fillArrarys();
-		//TODO stworzenie wyniku
-		return null;
+		return new Result(sequenceA, sequenceB, alignmentArray, jumps);
 	}
 
 	private void fillArrarys() {
 		for (int i = 1; i <= sequenceA.length(); ++i) {
-			for (int j = 0; j <= sequenceB.length(); ++j) {
+			for (int j = 1; j <= sequenceB.length(); ++j) {
 				fillArrarysCells(i, j);
 			}
 		}
 	}
 
 	private void fillArrarysCells(int i, int j) {
-		int vertical = getAlignment(i, j) + getPenalty(i - 1, j);
-		int horizontal = getAlignment(i, j) + getPenalty(i, j - 1);
-		int diagonal = getAlignment(i, j);
+		int vertical = verticalAlignment(i, j);
+		int horizontal = horizontalAlignment(i, j);
+		int diagonal = diagonalAlignment(i, j);
 		if (vertical > horizontal) {
 			if (vertical > diagonal) {
 				alignmentArray[i][j] = vertical;
@@ -63,6 +61,23 @@ public class SequenceAlignmentService {
 		}
 	}
 
+	private int diagonalAlignment(int i, int j) {
+		int ret = alignmentArray[i - 1][j - 1] + getAlignment(i, j);
+		return ret>0 ? ret : 0;
+	}
+
+	private int horizontalAlignment(int i, int j) {
+		int ret = alignmentArray[i][j - 1]  - getPenalty(i, j - 1);
+		return ret>0 ? ret : 0;
+	}
+
+	private int verticalAlignment(int i, int j) {
+		int ret = alignmentArray[i - 1][j] - getPenalty(i - 1, j);
+		return ret>0 ? ret : 0;
+	}
+
+	
+	
 	private int getAlignment(int i, int j) {
 		char c1 = sequenceA.charAt(i - 1);
 		char c2 = sequenceB.charAt(j - 1);

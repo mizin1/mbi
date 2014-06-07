@@ -70,13 +70,13 @@
 				<includes>
 					<include>**/*.vt</include>
 					<include>**/*.css</include>
-					<include>**/*.jpg</include>
+					<!-- <include>**/*.jpg</include> -->
 				</includes>
 			</resource>
 			<resource>
 				<directory>src/main/java/</directory>
 				<includes>
-					<include>**/*.hbm.xml</include>
+					<include>**/*.rng</include>
 				</includes>
 			</resource>
 		</resources>

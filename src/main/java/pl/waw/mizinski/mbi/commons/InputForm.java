@@ -35,6 +35,22 @@ public class InputForm {
 		this.sequenceB = sequenceB;
 	}
 
+	public String getCorrectedSequenceA() {
+		return correctSequence(sequenceA);
+	}
+	
+	public String getCorrectedSequenceB() {
+		return correctSequence(sequenceB);
+	}
+
+	public String correctSequence(String sequence) {
+		String ret = sequence.toUpperCase();
+		if (ret.contains("T") && ret.contains("U")) {
+			ret = ret.replaceAll("U", "T");
+		}
+		return ret;		
+	}
+	
 	public int getBreakBegin() {
 		return breakBegin;
 	}

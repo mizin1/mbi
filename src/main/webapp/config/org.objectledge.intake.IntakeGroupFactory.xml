@@ -8,13 +8,13 @@
 		<field name="SequenceA" key="sequenceA" type="String"
 			displayName="Sekwencja A">
 			<rule name="required" value="true">To pole jest Wymagane</rule>
-			<rule name="mask" value="([AGCT]+)|([AGCU]+)">To nie jest poprawna sekwencja DNA/RNA
+			<rule name="mask" value="[aAgGcCtTuU]+">To nie jest poprawna sekwencja DNA/RNA
 			</rule>
 		</field>
 		<field name="SequenceB" key="sequenceB" type="String"
 			displayName="Sekwencja B">
 			<rule name="required" value="true">To pole jest Wymagane</rule>
-			<rule name="mask" value="([AGCT]+)|([AGCU]+)">To nie jest poprawna sekwencja DNA/RNA
+			<rule name="mask" value="[aAgGcCtTuU]+">To nie jest poprawna sekwencja DNA/RNA
 			</rule>
 		</field>
 

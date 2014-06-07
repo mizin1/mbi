@@ -67,9 +67,25 @@
 
 	<component class="org.objectledge.intake.IntakeToolFinallyValve" />
 
+
+
+	<!-- AJAX components -->
+	<container key="ajaxContainer" />
+	<component class="org.objectledge.ajax.AjaxExecutorValve">
+		<parameter key="ajaxContainer" />
+		<parameter />
+		<parameter class-key="org.jcontainer.dna.Logger" />
+		<parameter />
+		<sequence>
+		</sequence>
+	</component>
+
+	<!-- AJAX services -->
+	<component class="pl.waw.mizinski.mbi.ajax.ResultService" />
     <!-- // pipeline //////////////////////////////////////////////////////////////////////// -->
 
-    <component class="org.objectledge.pipeline.ErrorHandlingPipeline">
+    <component  key="http-ErrorHandlingPipeline"
+    	 class="org.objectledge.pipeline.ErrorHandlingPipeline">
         <parameter class-key="org.jcontainer.dna.Logger"/>
         <sequence>
             <parameter class-key="org.objectledge.web.ContentTypeInitializerValve"/>
@@ -93,11 +109,48 @@
         </sequence>
     </component>
 
-
-
+	<component key="ajax-ErrorHandlingPipeline"
+		class="org.objectledge.pipeline.ErrorHandlingPipeline">
+		<parameter class-key="org.jcontainer.dna.Logger" />
+		<sequence>
+			<parameter class-key="org.objectledge.web.ContentTypeInitializerValve" />
+			<parameter class-key="org.objectledge.security.SecurityAuthenticationValve" />
+			<parameter class-key="org.objectledge.i18n.LocaleLoaderValve" />
+			<parameter class-key="org.objectledge.i18n.UTF8EncodingLoaderValve" />
+			<parameter class-key="org.objectledge.ajax.AjaxExecutorValve" />
+		</sequence>
+		<sequence>
+			<!--Exception section left empty -->
+		</sequence>
+		<sequence>
+		</sequence>
+	</component>
     <!-- // dispatchers ///////////////////////////////////////////////////////////////////// -->
 
-    <component class="org.objectledge.web.dispatcher.PipelineHttpDispatcher" key="main">
+	
+	<component key="http-request"
+		class="org.objectledge.web.dispatcher.PipelineHttpDispatcher">
+		<parameter key="http-ErrorHandlingPipeline" />
+		<parameter />
+	</component>
+
+	<component key="ajax-request"
+		class="org.objectledge.web.dispatcher.PipelineHttpDispatcher">
+		<parameter key="ajax-ErrorHandlingPipeline" />
+		<parameter />
+	</component>
+
+	<component class-key="org.objectledge.web.HttpDispatcher"
+		class="org.objectledge.web.dispatcher.SelectorHttpDispatcher">
+		<parameter />
+		<sequence>
+			<parameter key="ajax-request" />
+			<parameter key="http-request" />
+		</sequence>
+	</component>
+	
+
+  <!--   <component class="org.objectledge.web.dispatcher.PipelineHttpDispatcher" key="main">
         <parameter class-key="org.objectledge.pipeline.ErrorHandlingPipeline"/>
         <parameter/>
     </component>
@@ -106,6 +159,73 @@
 		class="org.objectledge.web.dispatcher.PipelineHttpDispatcher">
 		<parameter class-key="org.objectledge.pipeline.ErrorHandlingPipeline" />
 		<parameter />
-  </component>
+  </component> -->
 
+
+<!-- security components -->
+
+<component class="org.objectledge.security.SecurityAuthenticationValve" />
+
+
+
+	<component class-key="org.objectledge.security.ResourceRecognizerManager"
+		class="org.objectledge.security.ResourceRecognizerManagerImpl">
+		<parameter />
+		<sequence>
+		</sequence>
+	</component>
+	
+	<container key="securityContainer" />
+	<component class-key="org.objectledge.security.SecurityManager"
+		class="pl.waw.mizinski.mbi.security.MockSecurityManager">
+		<parameter key="securityContainer" />
+		<parameter />
+		<parameter />
+		<parameter />
+		<parameter />
+		<parameter />
+		<parameter />
+		<parameter />
+		<parameter />
+		<sequence>
+		</sequence>
+	</component>
+
+	<component class-key="org.objectledge.security.PasswordVerifier"
+		class="org.objectledge.security.PasswordVerifierImpl" />
+	<component class-key="org.objectledge.security.SecurityTokenModificationPolicy"
+		class="org.objectledge.security.SecurityTokenModificationPolicyImpl" />
+	<component
+		class="pl.waw.mizinski.mbi.security.MockDataBackend" />
+<component class="pl.waw.mizinski.mbi.security.DummyGroupNamingPolicy" />
+	<component class="org.objectledge.web.mvc.security.AclSecurityHelper" />
+	<component
+		class="org.objectledge.web.mvc.security.SecurityPolicyCheckingHelper" />
+
+	<component class="org.objectledge.web.mvc.security.SecurityPolicySystem" />
+	<component class="org.objectledge.security.menu.SecureMenuSystem" />
+	<component class="org.objectledge.ajax.service.SecurityCheckingService" />
+
+	<!-- content extractors -->
+	<component key="org.objectledge.filesystem.ContentExtractorContent"
+		class="org.objectledge.filesystem.ContentExtractor" />
+	<!-- becouse /locale direcoty is present in war, all locale dirs in jars 
+		should be extracted to be accessible -->
+	<component key="org.objectledge.filesystem.ContentExtractorLocale"
+		class="org.objectledge.filesystem.ContentExtractor" />
+	<component key="org.objectledge.filesystem.ContentExtractorDojo"
+		class="org.objectledge.filesystem.ContentExtractor" />
+
+	<!-- // valve utils ///////////////////////////////////////////////////////////////// -->
+
+	<component class="org.objectledge.encodings.HTMLEntityEncoder" />
+	<component class="org.objectledge.upload.FileDownload" />
+
+	<component class="org.objectledge.authentication.NamingPolicy" />
+	<component class="org.objectledge.authentication.LoginVerifier" />
+	<component class="org.objectledge.authentication.PasswordGenerator" />
+	<component class="org.objectledge.authentication.PasswordDigester">
+		<parameter value="MD5" />
+	</component>
+	
 </container>

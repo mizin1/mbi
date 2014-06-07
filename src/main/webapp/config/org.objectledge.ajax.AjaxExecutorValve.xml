@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ajax>
+	<!-- additional headers can be specified here <headers> <header name="" 
+		value=""/> </headers> -->
+
+	<!-- known services declaration -->
+	<services>
+
+		<service name="ResultService">
+			<method name="getBestFit">
+				<src class="pl.waw.mizinski.mbi.ajax.ResultService" method="getBestFit">
+				</src>
+			</method>
+			<method name="getNBestFits">
+				<src class="pl.waw.mizinski.mbi.ajax.ResultService" method="getNBestFits">
+					<param name="n" type="int" />
+				</src>
+			</method>
+			<method name="getFitsBetterThan">
+				<src class="pl.waw.mizinski.mbi.ajax.ResultService" method="getFitsBetterThan">
+					<param name="n" type="int" />
+				</src>
+			</method>
+		</service>
+
+	</services>
+</ajax>
