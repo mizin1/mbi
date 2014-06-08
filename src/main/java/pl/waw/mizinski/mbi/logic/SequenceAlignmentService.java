@@ -29,7 +29,7 @@ public class SequenceAlignmentService {
 	public Result performAlgorithm() {
 		initJumpsArray();
 		fillArrarys();
-		return new Result(sequenceA, sequenceB, alignmentArray, jumps);
+		return new Result(this);
 	}
 
 	private void fillArrarys() {
@@ -93,5 +93,21 @@ public class SequenceAlignmentService {
 		for (int i = 0; i <= sequenceB.length(); ++i) {
 			jumps[0][i] = NONE;
 		}
+	}
+	
+	String getSequenceA() {
+		return sequenceA;
+	}
+	
+	String getSequenceB() {
+		return sequenceB;
+	}
+	
+	int[][] getAlignmentArray() {
+		return alignmentArray;
+	}
+	
+	Jump[][] getJumps() {
+		return jumps;
 	}
 }

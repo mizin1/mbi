@@ -1,6 +1,5 @@
 package pl.waw.mizinski.mbi.commons;
 
-
 public enum AlignmentClass {
 	
 	alig0(0), alig1(1), alig2(2), alig3(3), alig4(4), alig5(5);
