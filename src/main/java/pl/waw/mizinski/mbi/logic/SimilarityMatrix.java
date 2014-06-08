@@ -8,7 +8,9 @@ import pl.waw.mizinski.mbi.commons.InputForm;
 
 public class SimilarityMatrix {
 	
-	private int[][] matrix = new int[4][4];
+	private static final int MATRIX_DIMENSION = 4;
+	
+	private int[][] matrix = new int[MATRIX_DIMENSION][MATRIX_DIMENSION];
 	
 	public SimilarityMatrix(InputForm inputForm) {
 		matrix[A.ordinal()][A.ordinal()] = inputForm.getAA();

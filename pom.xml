@@ -1,9 +1,11 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>pl.waw.mizinski</groupId>
-  <artifactId>mbi</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>pl.waw.mizinski</groupId>
+	<artifactId>mbi</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
+	<name>mbi</name>
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -30,13 +32,6 @@
 			<version>SNAPSHOT</version>
 			<classifier>classes</classifier>
 		</dependency>
-		<!-- <dependency>
-			<groupId>org.objectledge</groupId>
-			<artifactId>ledge-contrib</artifactId>
-			<version>SNAPSHOT</version>
-			<classifier>tests</classifier>
-			<scope>test</scope>
-		</dependency> -->
 		<dependency>
 			<groupId>org.objectledge</groupId>
 			<artifactId>ledge-contrib</artifactId>
@@ -44,12 +39,6 @@
 			<type>war</type>
 			<scope>compile</scope>
 		</dependency>
-<!-- 		<dependency>
-			<groupId>org.objectledge</groupId>
-			<artifactId>ledge-security</artifactId>
-			<classifier>classes</classifier>
-			<version>SNAPSHOT</version>
-		</dependency> -->
 		<dependency>
 			<groupId>org.objectledge</groupId>
 			<artifactId>ledge-intake</artifactId>
@@ -70,7 +59,6 @@
 				<includes>
 					<include>**/*.vt</include>
 					<include>**/*.css</include>
-					<!-- <include>**/*.jpg</include> -->
 				</includes>
 			</resource>
 			<resource>

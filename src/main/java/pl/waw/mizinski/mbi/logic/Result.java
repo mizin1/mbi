@@ -57,8 +57,21 @@ public class Result implements IResult{
 		return AlignmentClass.fromInt(alligmentInt);
 	}
 
-	public String getMessage() {
-		return "MOCK_MESSAGE";
+	public String getMessage(int i, int j) {
+		if (getAlignment(i, j) == 0) { 
+			return "Żadne z dopasowań nie jest lepsze niż 0";
+		}
+		Jump jump = getJump(i, j);
+		switch (jump) {
+			case DIAGONAL:
+				return "Brak przerwy, doliczono jedynie wartość dopasowania";
+			case VERTICAL:
+				return getJump(i - 1, j).isBreak() ? "Kontynuowanie przerwy w pionowej sekwencji" : "Rozpoczęcie przerwy w pioniowej sekwencji";
+			case HORIZONTAL:
+				return getJump(i, j - 1).isBreak() ? "Kontynuowanie przerwy w poziomej sekwencji" : "Rozpoczęcie przerwy w poziomej sekwencji";
+		}
+		
+		throw new IllegalStateException();
 	}
 	
 	public String[][] getNBestResults(int n) {
@@ -167,15 +180,15 @@ public class Result implements IResult{
 		public String[] getSequencesFragments() {
 			StringBuilder fragmentA = new StringBuilder();
 			StringBuilder fragmentB = new StringBuilder();
-			int i = this.i;
-			int j = this.j;
+			int x = this.i;
+			int y = this.j;
 			do {
-				fragmentA.append(sequenceA.charAt(i));
-				fragmentB.append(sequenceB.charAt(j));
-				Jump jump = getJump(i, j);
-				i = jump == Jump.HORIZONTAL ? i : i - 1;
-				j = jump == Jump.VERTICAL ? j : j - 1;
-			} while (getAlignment(i, j) != 0);
+				fragmentA.append(sequenceA.charAt(x));
+				fragmentB.append(sequenceB.charAt(y));
+				Jump jump = getJump(x, y);
+				x = jump == Jump.HORIZONTAL ? x : x - 1;
+				y = jump == Jump.VERTICAL ? y : y - 1;
+			} while (getAlignment(x, y) != 0);
 			return new String[] {fragmentA.reverse().toString(), fragmentB.reverse().toString()};
 		}
 	}

@@ -1,8 +1,9 @@
 $viewEnclosureTool.top()
-$pageTool.insertTitlePrefix("Cos tam cos tam")
-$pageTool.addStyleLink('../dojo/dojo/resources/dojo.css')##
-$pageTool.addStyleLink('../dojo/dijit/themes/tundra/tundra.css')##
+$pageTool.insertTitlePrefix("Smith-Waterman")
+$pageTool.addStyleLink('../dojo-1.8.3/dojo/resources/dojo.css')##
+$pageTool.addStyleLink('../dojo-1.8.3/dijit/themes/tundra/tundra.css')##
 $pageTool.addStyleLink('style/style.css')##
+#set ($menu = $component.embed("security.menu.SecureMenu",[['cparam', $cparam]]) )
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
@@ -15,26 +16,19 @@ $pageTool.addStyleLink('style/style.css')##
 			<script type="text/javascript" src="$scriptLink.src"##
  			#if($scriptLink.charset) charset="$scriptLink.charset"#end></script>
 		#end
-	
         #set($jslink = $link.sessionless())
-        <script type="text/javascript" src="$jslink.content('script/ScriptLoader.js')"##
-         charset="UTF-8"> </script>
-        <script type="text/javascript">
-        <!--
-        var scriptLoader = new ScriptLoader('$jslink.content('script/')');
-        // -->
-        </script>
-        <script type="text/javascript" src="$jslink.content('script/BrowserUtil.js')"##
-         charset="UTF-8"> </script>
-        ## DOJO need this configuration section
         <script type="text/javascript">
             djConfig= {isDebug: false, parseOnLoad: true, defaultTestTheme: 'soria', locale: "pl" };
         </script>
-		<script type="text/javascript" src="$jslink.content('../dojo/dojo/dojo.js')"##
+		<script type="text/javascript" src="$jslink.content('../dojo-1.8.3/dojo/dojo.js')"##
          charset="UTF-8"> </script>
 	</head>
 	<body class='tundra'>
-		$!embeddedPlaceholder
+		<div id="secure-menu"></div>
+			$menu
+		<div class="main">
+			$!embeddedPlaceholder
+		</div>
 	</body>
 </html>
 

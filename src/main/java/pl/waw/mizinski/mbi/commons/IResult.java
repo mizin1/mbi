@@ -10,7 +10,7 @@ public interface IResult {
 	
 	AlignmentClass getAlignmentClass(int i, int j);
 	
-	String getMessage();
+	String getMessage(int i, int j);
 	
 	String[][] getNBestResults(int n);
 	

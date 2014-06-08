@@ -11,6 +11,10 @@ public enum AlignmentClass {
 		this.alig = alig;
 	}
 	
+	public int getAlig() {
+		return alig;
+	}
+	
 	public static AlignmentClass fromInt(int alig) {
 		if (alig > alig5.alig) {
 			return alig5;

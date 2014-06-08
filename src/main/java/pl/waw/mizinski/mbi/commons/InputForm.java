@@ -8,16 +8,16 @@ public class InputForm {
 	private int breakBegin;
 	private int breakContinue;
 	
-	private int AA;
-	private int AG;
-	private int AC;
-	private int AT;
-	private int GG;
-	private int GC;
-	private int GT;
-	private int CC;
-	private int CT;
-	private int TT;
+	private int aa;
+	private int ag;
+	private int ac;
+	private int at;
+	private int gg;
+	private int gc;
+	private int gt;
+	private int cc;
+	private int ct;
+	private int tt;
 
 	public String getSequenceA() {
 		return sequenceA;
@@ -68,82 +68,84 @@ public class InputForm {
 	}
 
 	public int getAA() {
-		return AA;
+		return aa;
 	}
 
-	public void setAA(int aA) {
-		AA = aA;
+	public void setAA(int aa) {
+		this.aa = aa;
 	}
 
 	public int getAG() {
-		return AG;
+		return ag;
 	}
 
-	public void setAG(int aG) {
-		AG = aG;
+	public void setAG(int ag) {
+		this.ag = ag;
 	}
 
 	public int getAC() {
-		return AC;
+		return ac;
 	}
 
-	public void setAC(int aC) {
-		AC = aC;
+	public void setAC(int ac) {
+		this.ac = ac;
 	}
 
 	public int getAT() {
-		return AT;
+		return at;
 	}
 
-	public void setAT(int aT) {
-		AT = aT;
+	public void setAT(int at) {
+		this.at = at;
 	}
 
 	public int getGG() {
-		return GG;
+		return gg;
 	}
 
-	public void setGG(int gG) {
-		GG = gG;
+	public void setGG(int gg) {
+		this.gg = gg;
 	}
 
 	public int getGC() {
-		return GC;
+		return gc;
 	}
 
-	public void setGC(int gC) {
-		GC = gC;
+	public void setGC(int gc) {
+		this.gc = gc;
 	}
 
 	public int getGT() {
-		return GT;
+		return gt;
 	}
 
-	public void setGT(int gT) {
-		GT = gT;
+	public void setGT(int gt) {
+		this.gt = gt;
 	}
 
 	public int getCC() {
-		return CC;
+		return cc;
 	}
 
-	public void setCC(int cC) {
-		CC = cC;
+	public void setCC(int cc) {
+		this.cc = cc;
 	}
 
 	public int getCT() {
-		return CT;
+		return ct;
 	}
 
-	public void setCT(int cT) {
-		CT = cT;
+	public void setCT(int ct) {
+		this.ct = ct;
 	}
 
 	public int getTT() {
-		return TT;
+		return tt;
 	}
 
-	public void setTT(int tT) {
-		TT = tT;
+	public void setTT(int tt) {
+		this.tt = tt;
 	}
+
 }
+

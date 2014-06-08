@@ -76,8 +76,6 @@ public class SequenceAlignmentService {
 		return ret>0 ? ret : 0;
 	}
 
-	
-	
 	private int getAlignment(int i, int j) {
 		char c1 = sequenceA.charAt(i - 1);
 		char c2 = sequenceB.charAt(j - 1);

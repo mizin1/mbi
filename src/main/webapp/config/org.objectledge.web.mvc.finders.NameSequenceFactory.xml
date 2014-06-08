@@ -30,6 +30,7 @@
   <views separator="."/>
   <classes separator="." default-suffix="Default">
     <prefix>pl.waw.mizinski.mbi.modules</prefix>
+    	<prefix>org.objectledge.modules</prefix>
   </classes>
   <templates separator="/" default-suffix="Default"/>
 </config>  

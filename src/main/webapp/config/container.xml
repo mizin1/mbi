@@ -38,11 +38,15 @@
     <component class-key="org.objectledge.web.mvc.tools.LinkToolFactory"
                class="org.objectledge.web.mvc.tools.LinkToolFactoryImpl"/>
     <component class="org.objectledge.web.mvc.tools.PageToolFactory"/>
+    <component class="org.objectledge.web.mvc.components.ComponentToolFactory" />
+    <component class="org.objectledge.i18n.WebI18nToolFactory" />
     <component class="org.objectledge.templating.tools.ContextTools">
         <sequence>
             <parameter class-key="org.objectledge.web.mvc.tools.LinkToolFactory"/>
             <parameter class-key="org.objectledge.web.mvc.tools.PageToolFactory"/>
             <parameter class-key="org.objectledge.web.mvc.builders.ViewEnclosureManager"/>
+            <parameter class-key="org.objectledge.web.mvc.components.ComponentToolFactory"/>
+            <parameter class-key="org.objectledge.i18n.WebI18nToolFactory"/>
         </sequence>
     </component>
 
@@ -89,6 +93,7 @@
         <parameter class-key="org.jcontainer.dna.Logger"/>
         <sequence>
             <parameter class-key="org.objectledge.web.ContentTypeInitializerValve"/>
+         	<parameter class-key="org.objectledge.security.SecurityAuthenticationValve" />
             <parameter class-key="org.objectledge.i18n.LocaleLoaderValve" />
 			<parameter class-key="org.objectledge.i18n.UTF8EncodingLoaderValve" />
             <parameter class-key="org.objectledge.parameters.RequestParametersLoaderValve"/>
@@ -165,7 +170,7 @@
 <!-- security components -->
 
 <component class="org.objectledge.security.SecurityAuthenticationValve" />
-
+<component class="org.objectledge.web.mvc.security.SecurityPolicyCheckingValve"/>
 
 
 	<component class-key="org.objectledge.security.ResourceRecognizerManager"
@@ -197,7 +202,7 @@
 		class="org.objectledge.security.SecurityTokenModificationPolicyImpl" />
 	<component
 		class="pl.waw.mizinski.mbi.security.MockDataBackend" />
-<component class="pl.waw.mizinski.mbi.security.DummyGroupNamingPolicy" />
+	<component class="pl.waw.mizinski.mbi.security.DummyGroupNamingPolicy" />
 	<component class="org.objectledge.web.mvc.security.AclSecurityHelper" />
 	<component
 		class="org.objectledge.web.mvc.security.SecurityPolicyCheckingHelper" />

@@ -3,12 +3,16 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-  <servlet>
-    <servlet-name>ledge</servlet-name>
-    <servlet-class>org.objectledge.web.LedgeServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ledge</servlet-name>
-    <url-pattern>/ledge/*</url-pattern>
-  </servlet-mapping>
+	<servlet>
+		<servlet-name>ledge</servlet-name>
+		<servlet-class>org.objectledge.web.LedgeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ledge</servlet-name>
+		<url-pattern>/ledge/*</url-pattern>
+	</servlet-mapping>
+	
+	<session-config>
+		<session-timeout>60</session-timeout>
+	</session-config>
 </web-app>
