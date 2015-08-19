@@ -81,6 +81,10 @@ public class Result implements IResult{
 		throw new IllegalStateException();
 	}
 	
+	public int getDataSize() {
+		return results.length*results[0].length;
+	}
+	
 	public String[][] getNBestResults(int n) {
 		List<Fit> fits = collectBestFits(n);
 		return convertFitsToStringsArray(fits);

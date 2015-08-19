@@ -15,4 +15,6 @@ public interface IResult {
 	String[][] getNBestResults(int n);
 	
 	String[][] getResultsBetterThan(int alignment);
+	
+	int getDataSize();
 }
